@@ -97,6 +97,11 @@ const GlobalStyle = createGlobalStyle`
 		&::placeholder{
 			color: var(--color-gray)
 		}
+
+		&:focus {
+      border: none;
+      outline: none;
+    }
 	}
 
 	// Costume Scroll bar

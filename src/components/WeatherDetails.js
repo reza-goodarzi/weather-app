@@ -57,7 +57,7 @@ export default WeatherDetails;
 const WeatherDetailsStyle = styled.div`
   width: 56%;
   height: 68%;
-  margin: 8rem 0;
+  margin: 3.2rem 0;
 
   padding: 4rem 6rem;
   border-radius: 2rem;
@@ -71,7 +71,6 @@ const WeatherDetailsStyle = styled.div`
   flex-direction: column;
 
   .searchbar {
-    background: #ccff34;
     padding: 3rem 2rem;
   }
 
