@@ -1,4 +1,4 @@
-import { API_URL } from "../lib/constant";
+import { API_URL } from "../constant";
 
 export const getCurrentWether = async (local = "london", aqi = "no") => {
   try {
