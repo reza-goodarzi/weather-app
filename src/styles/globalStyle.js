@@ -18,20 +18,19 @@ const GlobalStyle = createGlobalStyle`
 
 	html, button, a ,input, textarea{
 		font-family: 'Roboto', sans-serif;
-		font-size: 62.5%;
 		font-weight: normal;
 		color: var(--color-black);
 
 		@media screen and (max-width: 80em){
-			font-size: 50%;
+			font-size: 62.5%;
 		}
 
 		@media screen and (max-width: 61.25em){
-			font-size: 43.75%;
+			font-size: 50%;
 		}
 
 		@media screen and (max-width: 37.5em){
-			font-size: 31.25%;
+			font-size: 36%;
 		}
 	}
 
@@ -48,10 +47,10 @@ const GlobalStyle = createGlobalStyle`
 	a:visited{
       text-decoration: none;
 		width: fit-content;
-      padding: 1.3rem 1.5rem;
+      padding: .5rem 1rem;
       transition: all 0.2s;
       position: relative;
-      font-size: 1.6rem;
+      font-size: 1rem;
       //Change for the <button> element
       border: none;
       cursor: pointer;
@@ -63,11 +62,11 @@ const GlobalStyle = createGlobalStyle`
 
 	button{
 			text-decoration: none;
-      padding: 1.3rem 1.5rem;
+      padding: .5rem 1rem;
       border-radius: 5px;
       transition: all 0.2s;
       position: relative;
-      font-size: 1.6rem;
+      font-size: 1rem;
       background-color: transparent;
       //Change for the <button> element
       border: none;
@@ -86,8 +85,8 @@ const GlobalStyle = createGlobalStyle`
 /* ---------------------------------- Input --------------------------------- */
 	input, textarea{
 		width: -webkit-fill-available;
-		font-size: 1.6rem;
-		padding: 1.5rem 1rem;
+		font-size: 1rem;
+		padding: 1rem .5rem;
 		border: none;
 		box-shadow: var(--shadow-dark);
 		border-radius: 5px;
@@ -121,7 +120,7 @@ const GlobalStyle = createGlobalStyle`
 	}
 	*::-webkit-scrollbar-thumb {
 		background-color: rgba(155, 155, 155, 0.7);
-		border-radius: 2rem;
+		border-radius: 1rem;
 		border: none;
 	}
 
