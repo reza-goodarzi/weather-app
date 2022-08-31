@@ -1,53 +1,63 @@
-import React from "react";
+import { useContext } from "react";
 import styled from "styled-components";
+// contexts
+import { WeatherContext } from "../context/weather-context";
+// components
 import Searchbar from "./Searchbar";
-
 // ICONS
 import { MdWaterDrop, MdCloud } from "react-icons/md";
 import { FaWind } from "react-icons/fa";
 
 function WeatherDetails() {
+  const { data } = useContext(WeatherContext);
+
   return (
     <WeatherDetailsStyle>
-      <div className="searchbar">
-        <Searchbar />
-      </div>
-      <div className="information">
-        <BasicInformationStyle>
-          <span className="degree">08°</span>
-          <div className="city">
-            <span className="name">London</span>
-            <span className="date">06:09 - Sunday, 6 Jun 22</span>
-            <span className="condition">Sunny</span>
+      {data ? (
+        <>
+          <div className="searchbar">
+            <Searchbar />
           </div>
-          <img
-            className="logo"
-            src="http://cdn.weatherapi.com/weather/64x64/day/113.png"
-            alt="Sunny"
-          />
-        </BasicInformationStyle>
-        <DetailsInformationStyle>
-          <div>
-            <FaWind className="icon" />
-            <span>4.3 KM</span>
-          </div>
+          <div className="information">
+            <BasicInformationStyle>
+              <span className="degree">{Math.round(data.current.temp_c)}°</span>
+              <div className="city">
+                <span className="name">{data.location.name}</span>
+                <span className="date">{new Date(data.location.localtime).toLocaleString()}</span>
+                <span className="condition">{data.current.condition.text}</span>
+              </div>
+              <img
+                className="logo"
+                src={data.current.condition.icon}
+                alt={data.current.condition.text}
+              />
+            </BasicInformationStyle>
+            <DetailsInformationStyle>
+              <div>
+                <FaWind className="icon" />
+                <span>{data.current.wind_kph} KM</span>
+              </div>
 
-          <div>
-            <MdCloud className="icon" />
-            <span>65%</span>
-          </div>
+              <div>
+                <MdCloud className="icon" />
+                <span>{data.current.cloud}%</span>
+              </div>
 
-          <div>
-            <MdWaterDrop className="icon" />
-            <span>25%</span>
-          </div>
+              <div>
+                <MdWaterDrop className="icon" />
+                <span>{data.current.humidity}%</span>
+              </div>
 
-          <div>
-            <i className="icon">UV</i>
-            <span>5</span>
+              <div>
+                <i className="icon">UV</i>
+                <span>{data.current.uv}</span>
+              </div>
+            </DetailsInformationStyle>
           </div>
-        </DetailsInformationStyle>
-      </div>
+        </>
+      ) : (
+        <Loading>Loading...</Loading>
+      )}
     </WeatherDetailsStyle>
   );
 }
@@ -57,10 +67,10 @@ export default WeatherDetails;
 const WeatherDetailsStyle = styled.div`
   width: 56%;
   height: 68%;
-  margin: 3.2rem 0;
+  margin: 2rem 0;
 
-  padding: 4rem 6rem;
-  border-radius: 2rem;
+  padding: 2.5rem 4rem;
+  border-radius: 1rem;
 
   background: rgba(255, 255, 255, 0.2);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
@@ -71,12 +81,12 @@ const WeatherDetailsStyle = styled.div`
   flex-direction: column;
 
   .searchbar {
-    padding: 3rem 2rem;
+    padding: 1.5rem 1rem;
   }
 
   .information {
     flex: 1;
-    padding: 3rem 2rem;
+    padding: 1.5rem 1rem;
     color: var(--color-white);
     text-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
 
@@ -90,11 +100,11 @@ const BasicInformationStyle = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 2rem;
+  padding: 0.5rem;
   width: 75%;
 
   .degree {
-    font-size: 7rem;
+    font-size: 5rem;
   }
 
   .city {
@@ -103,17 +113,17 @@ const BasicInformationStyle = styled.div`
     gap: 2px;
 
     span {
-      font-size: 1.4rem;
+      font-size: 0.8rem;
     }
 
     .name {
-      font-size: 2.8rem;
+      font-size: 1.5rem;
       font-weight: 500;
     }
   }
 
   .logo {
-    padding: 1rem;
+    padding: 0.5rem;
     width: 52px;
     filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.8));
   }
@@ -122,7 +132,7 @@ const BasicInformationStyle = styled.div`
 const DetailsInformationStyle = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 1rem;
   justify-content: flex-end;
 
   div {
@@ -130,23 +140,33 @@ const DetailsInformationStyle = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    padding: 2rem;
-    width: 10rem;
-    height: 12rem;
-    border-radius: 1rem;
+    padding: 1rem;
+    width: 6rem;
+    height: 7rem;
+    border-radius: 0.5rem;
 
     background-color: var(--color-white);
     color: var(--color-black);
 
     .icon {
-      font-size: 4.4rem;
+      font-size: 3rem;
       font-weight: bold;
       cursor: default;
     }
 
     span {
-      font-size: 2rem;
+      font-size: 1rem;
       /* font-weight: bold; */
     }
   }
+`;
+
+const Loading = styled.div`
+  font-size: 2.5rem;
+  text-align: center;
+  padding: 5rem 0;
+  font-weight: bold;
+  text-transform: uppercase;
+
+  color: var(--color-white);
 `;
