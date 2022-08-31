@@ -1,17 +1,22 @@
-import React from "react";
+import { useContext, useRef } from "react";
 import styled from "styled-components";
-
+//Context
+import { WeatherContext } from "../context/weather-context";
 // ICONS
 import { FaSearch } from "react-icons/fa";
 
 function Searchbar() {
+  const inputRef = useRef(null);
+  const { fetchCurrentWeather } = useContext(WeatherContext);
+
   const onSubmitHandler = (e) => {
     e.preventDefault();
+    fetchCurrentWeather(inputRef.current.value);
   };
 
   return (
     <SearchbarStyle onSubmit={onSubmitHandler}>
-      <input type="text" placeholder="Search Your location" />
+      <input ref={inputRef} type="text" placeholder="Search Your location" />
       <button>
         <FaSearch />
       </button>
