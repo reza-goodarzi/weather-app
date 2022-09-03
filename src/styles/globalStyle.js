@@ -11,9 +11,9 @@ const GlobalStyle = createGlobalStyle`
 		--color-gray: #77798c;
 		--color-red: #DB0D0E;
 
-		--shadow-light: 0 0 3rem #00000003;
-		--shadow-dark: 0 3rem 5rem #00000005;
-		--shadow-darker: 0 1rem 2rem #00000020;
+		--shadow-light: 0 4px 8px #00000020;
+		--shadow-dark: 0 8px 8px #00000035;
+		--shadow-darker: 0 8px 16px #00000050;
 	}
 
 	html, button, a ,input, textarea{
@@ -88,7 +88,6 @@ const GlobalStyle = createGlobalStyle`
 		font-size: 1rem;
 		padding: 1rem .5rem;
 		border: none;
-		box-shadow: var(--shadow-dark);
 		border-radius: 5px;
 		resize: none;
 

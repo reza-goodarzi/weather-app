@@ -14,7 +14,7 @@ export const getCurrentWether = async (local = "london", aqi = "no") => {
 
     return data;
   } catch (error) {
-    console.error(error);
+    throw error;
   }
 };
 
@@ -32,6 +32,6 @@ export const searchCity = async (local) => {
 
     return data;
   } catch (error) {
-    console.error(error);
+    throw error;
   }
 };

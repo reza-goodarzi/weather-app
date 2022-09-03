@@ -4,12 +4,14 @@ import GlobalStyle from "./styles/globalStyle";
 import WeatherDetails from "./components/WeatherDetails";
 import { useContext } from "react";
 import { WeatherContext } from "./context/weather-context";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   const { data } = useContext(WeatherContext);
   return (
     <>
       <GlobalStyle />
+      <ToastContainer />
       <BackgroundStyled isDay={Boolean(data?.current?.is_day)}>
         <WeatherDetails />
       </BackgroundStyled>

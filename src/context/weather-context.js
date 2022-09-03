@@ -1,8 +1,8 @@
-import React, { createContext } from "react";
-import { useEffect } from "react";
-import { useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import { useCurrentLocation } from "../hooks/useCurrentLocation";
+import { errorToast } from "../lib";
 import { getCurrentWether } from "../services";
+import { toast } from "react-toastify";
 
 export const WeatherContext = createContext({
   data: null,
@@ -16,15 +16,29 @@ export function WeatherContextProvider({ children }) {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    if (coords) {
+    if (coords && !data) {
       fetchCurrentWeather(coords);
     }
-  }, [coords]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [coords, data]);
+
+  useEffect(() => {
+    if (error) errorToast(error);
+  }, [error]);
 
   const fetchCurrentWeather = (location, aqi = "no") => {
     getCurrentWether(location, aqi)
-      .then((res) => setData(res))
-      .catch((error) => setError(error));
+      .then((res) => {
+        setData(res);
+        if (data) {
+          toast(`Getting ${res.location.name} weather information was successful.`, {
+            type: "success",
+          });
+        }
+      })
+      .catch((error) => {
+        setError(error);
+      });
   };
 
   return (
