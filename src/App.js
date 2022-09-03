@@ -1,34 +1,32 @@
-import styled from "styled-components";
-import GlobalStyle from "./styles/globalStyle";
-
-import WeatherDetails from "./components/WeatherDetails";
 import { useContext } from "react";
-import { WeatherContext } from "./context/weather-context";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
+//Pages
+import CurrentWeather from "./pages/CurrentWeather";
+import DetailWeather from "./pages/DetailWeather";
+import FutureWeather from "./pages/FutureWeather";
+//Components
+import GlobalStyle from "./styles/globalStyle";
+import Layout from "./components/Layout";
+//Contexts
+import { WeatherContext } from "./context/weather-context";
 
 function App() {
   const { data } = useContext(WeatherContext);
   return (
-    <>
+    <BrowserRouter>
       <GlobalStyle />
       <ToastContainer />
-      <BackgroundStyled isDay={Boolean(data?.current?.is_day)}>
-        <WeatherDetails />
-      </BackgroundStyled>
-    </>
+
+      <Layout isDay={Boolean(data?.current?.is_day)}>
+        <Routes>
+          <Route path="/" element={<CurrentWeather />} />
+          <Route path="/detail" element={<DetailWeather />} />
+          <Route path="/future" element={<FutureWeather />} />
+        </Routes>
+      </Layout>
+    </BrowserRouter>
   );
 }
 
 export default App;
-
-const BackgroundStyled = styled.div`
-  background: url(${(props) => (props.isDay ? "assets/day.jpg" : "assets/night.jpg")});
-  width: 100%;
-  min-height: 100vh;
-  background-position: center;
-  background-size: cover;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;

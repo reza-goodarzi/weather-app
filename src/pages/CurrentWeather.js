@@ -3,16 +3,16 @@ import styled from "styled-components";
 // contexts
 import { WeatherContext } from "../context/weather-context";
 // components
-import Searchbar from "./Searchbar";
+import Searchbar from "../components/Searchbar";
 // ICONS
 import { MdWaterDrop, MdCloud } from "react-icons/md";
 import { FaWind } from "react-icons/fa";
 
-function WeatherDetails() {
+function CurrentWeather() {
   const { data } = useContext(WeatherContext);
 
   return (
-    <WeatherDetailsStyle>
+    <CurrentWeatherStyle>
       {data ? (
         <>
           <div className="searchbar">
@@ -58,25 +58,13 @@ function WeatherDetails() {
       ) : (
         <Loading>Loading...</Loading>
       )}
-    </WeatherDetailsStyle>
+    </CurrentWeatherStyle>
   );
 }
 
-export default WeatherDetails;
+export default CurrentWeather;
 
-const WeatherDetailsStyle = styled.div`
-  width: 56%;
-  height: 68%;
-  margin: 2rem 0;
-
-  padding: 2.5rem 4rem;
-  border-radius: 1rem;
-
-  background: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-
+const CurrentWeatherStyle = styled.div`
   display: flex;
   flex-direction: column;
 
