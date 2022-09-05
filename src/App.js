@@ -10,6 +10,7 @@ import GlobalStyle from "./styles/globalStyle";
 import Layout from "./components/Layout";
 //Contexts
 import { WeatherContext } from "./context/weather-context";
+import NotFound from "./pages/NotFound";
 
 function App() {
   const { data } = useContext(WeatherContext);
@@ -23,6 +24,7 @@ function App() {
           <Route path="/" element={<CurrentWeather />} />
           <Route path="/detail" element={<DetailWeather />} />
           <Route path="/forecast" element={<FutureWeather />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Layout>
     </BrowserRouter>
