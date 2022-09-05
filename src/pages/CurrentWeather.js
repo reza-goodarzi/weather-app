@@ -8,6 +8,7 @@ import Searchbar from "../components/Searchbar";
 import { MdWaterDrop, MdCloud } from "react-icons/md";
 import { FaWind } from "react-icons/fa";
 import Card from "../components/Card";
+import Loading from "../components/Loading";
 
 function CurrentWeather() {
   const { data } = useContext(WeatherContext);
@@ -42,7 +43,7 @@ function CurrentWeather() {
           </div>
         </>
       ) : (
-        <Loading>Loading...</Loading>
+        <Loading />
       )}
     </CurrentWeatherStyle>
   );
@@ -108,14 +109,4 @@ const DetailsInformationStyle = styled.div`
   flex-wrap: wrap;
   gap: 1rem;
   justify-content: flex-end;
-`;
-
-const Loading = styled.div`
-  font-size: 2.5rem;
-  text-align: center;
-  padding: 5rem 0;
-  font-weight: bold;
-  text-transform: uppercase;
-
-  color: var(--color-white);
 `;

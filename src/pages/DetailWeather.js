@@ -1,8 +1,16 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import styled from "styled-components";
+
 import Card from "../components/Card";
 import Searchbar from "../components/Searchbar";
+import MoonPhase from "../components/MoonPhase";
+import Loading from "../components/Loading";
+
 import { WeatherContext } from "../context/weather-context";
+
+import { getAstronomy } from "../services";
+import { errorToast } from "../lib";
+import { airQuality } from "../constant";
 
 // Icons
 import { BsFillSunriseFill, BsFillSunsetFill, BsFlagFill } from "react-icons/bs";
@@ -10,12 +18,6 @@ import { WiMoonrise, WiMoonset } from "react-icons/wi";
 import { TbTemperatureCelsius, TbTemperatureFahrenheit } from "react-icons/tb";
 import { GiWindsock } from "react-icons/gi";
 import { MdVisibility } from "react-icons/md";
-
-import MoonPhase from "../components/MoonPhase";
-import { useEffect } from "react";
-import { getAstronomy } from "../services";
-import { errorToast } from "../lib";
-import { airQuality } from "../constant";
 
 function DetailWeather() {
   const { data } = useContext(WeatherContext);
@@ -30,7 +32,7 @@ function DetailWeather() {
   }, [data]);
 
   if (!data || !astronomy) {
-    return <p>Loading...</p>;
+    return <Loading />;
   }
 
   return (

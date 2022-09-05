@@ -9,6 +9,7 @@ import {
   ResponsiveContainer,
   CartesianAxis,
 } from "recharts";
+import Loading from "../components/Loading";
 import Searchbar from "../components/Searchbar";
 import { WeatherContext } from "../context/weather-context";
 import { errorToast } from "../lib";
@@ -29,7 +30,7 @@ function FutureWeather() {
   console.log(forecasts);
 
   if (!forecasts) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   return (
