@@ -1,9 +1,9 @@
 import { API_URL } from "../constant";
 
-export const getCurrentWether = async (local = "london", aqi = "no") => {
+export const getCurrentWether = async (location = "london") => {
   try {
     const response = await fetch(
-      `${API_URL}/current.json?key=${process.env.REACT_APP_API_KEY}&aqi=${aqi}&q=${local}`
+      `${API_URL}/current.json?key=${process.env.REACT_APP_API_KEY}&aqi=yes&q=${location}`
     );
 
     const data = await response.json();
@@ -18,10 +18,10 @@ export const getCurrentWether = async (local = "london", aqi = "no") => {
   }
 };
 
-export const searchCity = async (local) => {
+export const searchCity = async (location) => {
   try {
     const response = await fetch(
-      `${API_URL}/search.json?key=${process.env.REACT_APP_API_KEY}&q=${local}`
+      `${API_URL}/search.json?key=${process.env.REACT_APP_API_KEY}&q=${location}`
     );
 
     const data = await response.json();
@@ -36,10 +36,10 @@ export const searchCity = async (local) => {
   }
 };
 
-export const getForecasts = async (local) => {
+export const getForecasts = async (location) => {
   try {
     const response = await fetch(
-      `${API_URL}/forecast.json?key=${process.env.REACT_APP_API_KEY}&q=${local}&days=10&aqi=no&alerts=no`
+      `${API_URL}/forecast.json?key=${process.env.REACT_APP_API_KEY}&q=${location}&days=10&aqi=no&alerts=no`
     );
 
     const data = await response.json();
@@ -56,6 +56,26 @@ export const getForecasts = async (local) => {
     }));
 
     return transformData;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const getAstronomy = async (location) => {
+  try {
+    const response = await fetch(
+      `${API_URL}/astronomy.json?key=${process.env.REACT_APP_API_KEY}&q=${location}&dt=${
+        new Date().toISOString().split("T")[0]
+      }`
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.error.message);
+    }
+
+    return data.astronomy.astro;
   } catch (error) {
     throw error;
   }

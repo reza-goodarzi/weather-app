@@ -7,6 +7,7 @@ import Searchbar from "../components/Searchbar";
 // ICONS
 import { MdWaterDrop, MdCloud } from "react-icons/md";
 import { FaWind } from "react-icons/fa";
+import Card from "../components/Card";
 
 function CurrentWeather() {
   const { data } = useContext(WeatherContext);
@@ -33,25 +34,10 @@ function CurrentWeather() {
               />
             </BasicInformationStyle>
             <DetailsInformationStyle>
-              <div>
-                <FaWind className="icon" />
-                <span>{data.current.wind_kph} KM</span>
-              </div>
-
-              <div>
-                <MdCloud className="icon" />
-                <span>{data.current.cloud}%</span>
-              </div>
-
-              <div>
-                <MdWaterDrop className="icon" />
-                <span>{data.current.humidity}%</span>
-              </div>
-
-              <div>
-                <i className="icon">UV</i>
-                <span>{data.current.uv}</span>
-              </div>
+              <Card icon={<FaWind />}>{data.current.wind_kph} KM</Card>
+              <Card icon={<MdCloud />}>{data.current.cloud}%</Card>
+              <Card icon={<MdWaterDrop />}>{data.current.humidity}%</Card>
+              <Card icon="UV">{data.current.uv}</Card>
             </DetailsInformationStyle>
           </div>
         </>
@@ -122,31 +108,6 @@ const DetailsInformationStyle = styled.div`
   flex-wrap: wrap;
   gap: 1rem;
   justify-content: flex-end;
-
-  div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    padding: 1rem;
-    width: 6rem;
-    height: 7rem;
-    border-radius: 0.5rem;
-
-    background-color: var(--color-white);
-    color: var(--color-black);
-
-    .icon {
-      font-size: 3rem;
-      font-weight: bold;
-      cursor: default;
-    }
-
-    span {
-      font-size: 1rem;
-      /* font-weight: bold; */
-    }
-  }
 `;
 
 const Loading = styled.div`

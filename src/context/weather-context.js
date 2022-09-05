@@ -26,8 +26,8 @@ export function WeatherContextProvider({ children }) {
     if (error) errorToast(error);
   }, [error]);
 
-  const fetchCurrentWeather = (location, aqi = "no") => {
-    getCurrentWether(location, aqi)
+  const fetchCurrentWeather = (location) => {
+    getCurrentWether(location)
       .then((res) => {
         setData(res);
         if (data) {
