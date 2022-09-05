@@ -13,7 +13,7 @@ function Layout({ isDay, children }) {
             <Link to="/detail">Detail info</Link>
           </li>
           <li>
-            <Link to="/future">Future of ten</Link>
+            <Link to="/forecast">Forecast</Link>
           </li>
         </ul>
       </NavStyle>
@@ -59,7 +59,7 @@ const BackgroundStyled = styled.div`
 const MainSection = styled.main`
   width: 56%;
   height: 68%;
-  margin: 2rem 0;
+  margin: 6rem 0 2rem;
 
   padding: 2.5rem 4rem;
   border-radius: 1rem;

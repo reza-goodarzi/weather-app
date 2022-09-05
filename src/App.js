@@ -4,7 +4,7 @@ import { ToastContainer } from "react-toastify";
 //Pages
 import CurrentWeather from "./pages/CurrentWeather";
 import DetailWeather from "./pages/DetailWeather";
-import FutureWeather from "./pages/FutureWeather";
+import FutureWeather from "./pages/Forecast";
 //Components
 import GlobalStyle from "./styles/globalStyle";
 import Layout from "./components/Layout";
@@ -22,7 +22,7 @@ function App() {
         <Routes>
           <Route path="/" element={<CurrentWeather />} />
           <Route path="/detail" element={<DetailWeather />} />
-          <Route path="/future" element={<FutureWeather />} />
+          <Route path="/forecast" element={<FutureWeather />} />
         </Routes>
       </Layout>
     </BrowserRouter>
