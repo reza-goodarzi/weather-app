@@ -16,11 +16,12 @@ export function WeatherContextProvider({ children }) {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [city, setCity] = useState("");
+
   useEffect(() => {
     if (city && !data) {
       fetchCurrentWeather(city);
     }
-    if (coords && !data) {
+    if (coords && !data && !city) {
       fetchCurrentWeather(coords);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -35,6 +36,7 @@ export function WeatherContextProvider({ children }) {
       .then((res) => {
         setData(res);
         setCity("");
+
         if (data) {
           toast(`Getting ${res.location.name} weather information was successful.`, {
             type: "success",
@@ -45,6 +47,7 @@ export function WeatherContextProvider({ children }) {
         if (city) {
           fetchCurrentWeather(coords);
           setCity("");
+          window.history.replaceState(null, "", "/");
         } else {
           setError(error);
         }
