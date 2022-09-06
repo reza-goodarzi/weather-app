@@ -8,14 +8,18 @@ export const WeatherContext = createContext({
   data: null,
   error: null,
   fetchCurrentWeather: (location, aqi) => {},
+  setCity: (name) => {},
 });
 
 export function WeatherContextProvider({ children }) {
   const coords = useCurrentLocation();
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
-
+  const [city, setCity] = useState("");
   useEffect(() => {
+    if (city && !data) {
+      fetchCurrentWeather(city);
+    }
     if (coords && !data) {
       fetchCurrentWeather(coords);
     }
@@ -30,6 +34,7 @@ export function WeatherContextProvider({ children }) {
     getCurrentWether(location)
       .then((res) => {
         setData(res);
+        setCity("");
         if (data) {
           toast(`Getting ${res.location.name} weather information was successful.`, {
             type: "success",
@@ -37,12 +42,17 @@ export function WeatherContextProvider({ children }) {
         }
       })
       .catch((error) => {
-        setError(error);
+        if (city) {
+          fetchCurrentWeather(coords);
+          setCity("");
+        } else {
+          setError(error);
+        }
       });
   };
 
   return (
-    <WeatherContext.Provider value={{ data, error, fetchCurrentWeather }}>
+    <WeatherContext.Provider value={{ data, error, fetchCurrentWeather, setCity }}>
       {children}
     </WeatherContext.Provider>
   );

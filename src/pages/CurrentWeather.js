@@ -10,9 +10,19 @@ import { FaWind } from "react-icons/fa";
 import Card from "../components/Card";
 import Loading from "../components/Loading";
 
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
+
 function CurrentWeather() {
+  const params = useParams();
+  const { setCity } = useContext(WeatherContext);
   const { data } = useContext(WeatherContext);
 
+  useEffect(() => {
+    if (params.city) {
+      setCity(params.city);
+    }
+  }, [params.city, setCity]);
   return (
     <CurrentWeatherStyle>
       {data ? (
