@@ -45,7 +45,9 @@ const NavStyle = styled.nav`
 `;
 
 const BackgroundStyled = styled.div`
-  background: url(${(props) => (props.isDay ? "assets/day.jpg" : "assets/night.jpg")});
+  background-image: url(${(props) => (props.isDay ? "assets/day.jpg" : "assets/night.jpg")});
+  background-attachment: fixed;
+
   width: 100%;
   min-height: 100vh;
   background-position: center;
