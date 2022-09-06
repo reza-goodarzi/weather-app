@@ -22,15 +22,15 @@ const GlobalStyle = createGlobalStyle`
 		color: var(--color-black);
 
 		@media screen and (max-width: 80em){
-			font-size: 62.5%;
+			font-size: 75%;
 		}
 
 		@media screen and (max-width: 61.25em){
-			font-size: 50%;
+			font-size: 62.5%;
 		}
 
 		@media screen and (max-width: 37.5em){
-			font-size: 36%;
+			font-size: 50%;
 		}
 	}
 
@@ -58,6 +58,10 @@ const GlobalStyle = createGlobalStyle`
 
       display: flex;
       align-items: center;
+
+		@media screen and (max-width: 640px) {
+      	font-size: 2rem;
+    }
 	}
 
 	button{
@@ -77,6 +81,10 @@ const GlobalStyle = createGlobalStyle`
       align-items: center;
 			justify-content: center;
 
+			@media screen and (max-width: 640px) {
+      	font-size: 1.5rem;
+    	}
+
 			&:hover{
 				color: var(--color-primary);
 			}
@@ -91,6 +99,10 @@ const GlobalStyle = createGlobalStyle`
 		border-radius: 5px;
 		resize: none;
 
+		@media screen and (max-width: 640px) {
+    	font-size: 1.6rem;
+  	}
+
 
 		&::placeholder{
 			color: var(--color-gray)
@@ -101,8 +113,6 @@ const GlobalStyle = createGlobalStyle`
       outline: none;
     }
 	}
-
-	// Costume Scroll bar
 
 	// work in firefox
 	* {

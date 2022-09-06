@@ -67,6 +67,10 @@ const CurrentWeatherStyle = styled.div`
 
   .searchbar {
     padding: 1.5rem 1rem;
+
+    @media screen and (max-width: 640px) {
+      padding: 0;
+    }
   }
 
   .information {
@@ -78,6 +82,12 @@ const CurrentWeatherStyle = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @media screen and (max-width: 640px) {
+      flex-direction: column;
+      align-items: center;
+      gap: 5rem;
+    }
   }
 `;
 
@@ -88,8 +98,20 @@ const BasicInformationStyle = styled.div`
   padding: 0.5rem;
   width: 75%;
 
+  @media screen and (max-width: 640px) {
+    width: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
   .degree {
     font-size: 5rem;
+
+    @media screen and (max-width: 640px) {
+      font-size: 8rem;
+      width: 100%;
+      text-align: center;
+    }
   }
 
   .city {
@@ -99,18 +121,30 @@ const BasicInformationStyle = styled.div`
 
     span {
       font-size: 0.8rem;
+      @media screen and (max-width: 640px) {
+        font-size: 1.5rem;
+      }
     }
 
     .name {
       font-size: 1.5rem;
       font-weight: 500;
+
+      @media screen and (max-width: 640px) {
+        font-size: 3rem;
+      }
     }
   }
 
   .logo {
     padding: 0.5rem;
-    width: 52px;
+    width: 64px;
     filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.8));
+    @media screen and (max-width: 640px) {
+      width: 44px;
+      align-self: flex-start;
+      padding: 0 0.5rem;
+    }
   }
 `;
 
@@ -119,4 +153,9 @@ const DetailsInformationStyle = styled.div`
   flex-wrap: wrap;
   gap: 1rem;
   justify-content: flex-end;
+
+  @media screen and (max-width: 640px) {
+    width: 100%;
+    justify-content: space-evenly;
+  }
 `;

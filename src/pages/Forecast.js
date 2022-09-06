@@ -9,6 +9,7 @@ import {
   ResponsiveContainer,
   CartesianAxis,
 } from "recharts";
+import styled from "styled-components";
 import Loading from "../components/Loading";
 import Searchbar from "../components/Searchbar";
 import { WeatherContext } from "../context/weather-context";
@@ -36,7 +37,8 @@ function FutureWeather() {
   return (
     <>
       <Searchbar />
-      <ResponsiveContainer width="95%" height={440}>
+
+      <ChartContainer width="95%">
         <BarChart data={forecasts} margin={{ top: 44 }}>
           <Bar
             dataKey="minTemp"
@@ -63,9 +65,21 @@ function FutureWeather() {
             cursor={{ fill: "var(--color-white)", opacity: 0.25 }}
           />
         </BarChart>
-      </ResponsiveContainer>
+      </ChartContainer>
     </>
   );
 }
 
 export default FutureWeather;
+
+const ChartContainer = styled(ResponsiveContainer)`
+  height: 440px !important;
+
+  @media screen and (max-width: 640px) {
+    height: 320px !important;
+  }
+
+  @media screen and (max-width: 420px) {
+    height: 260px !important;
+  }
+`;

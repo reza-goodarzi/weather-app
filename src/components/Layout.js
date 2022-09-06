@@ -42,6 +42,12 @@ const NavStyle = styled.nav`
     margin: 0;
     gap: 16px;
     cursor: pointer;
+
+    li a {
+      @media screen and (max-width: 640px) {
+        font-size: 1.5rem;
+      }
+    }
   }
 `;
 
@@ -61,7 +67,6 @@ const BackgroundStyled = styled.div`
 
 const MainSection = styled.main`
   width: 56%;
-  height: 68%;
   margin: 6rem 0 2rem;
 
   padding: 2.5rem 4rem;
@@ -71,4 +76,18 @@ const MainSection = styled.main`
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
+
+  @media screen and (max-width: 1200px) {
+    width: 65%;
+  }
+
+  @media screen and (max-width: 780px) {
+    width: 85%;
+  }
+
+  @media screen and (max-width: 640px) {
+    width: 100%;
+    padding: 2rem;
+    border-radius: 0;
+  }
 `;

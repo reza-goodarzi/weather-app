@@ -144,6 +144,10 @@ const DetailWeatherStyle = styled.div`
     color: var(--color-white);
     font-weight: bold;
     text-shadow: 0 0 8px #00000030;
+
+    @media screen and (max-width: 640px) {
+      font-size: 2.4rem;
+    }
   }
 `;
 

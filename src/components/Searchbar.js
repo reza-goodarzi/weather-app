@@ -105,6 +105,11 @@ const SearchResultStyle = styled.div`
     font-weight: bold;
     color: var(--color-gray);
 
+    @media screen and (max-width: 640px) {
+      height: 44px;
+      letter-spacing: normal;
+    }
+
     &:hover {
       /* transform: scale(1.05); */
       font-size: 120%;
