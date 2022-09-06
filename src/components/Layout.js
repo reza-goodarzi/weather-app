@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 function Layout({ isDay, children }) {
+  console.log({ isDay });
   return (
     <>
       <NavStyle>
@@ -45,7 +46,7 @@ const NavStyle = styled.nav`
 `;
 
 const BackgroundStyled = styled.div`
-  background-image: url(${(props) => (props.isDay ? "assets/day.jpg" : "assets/night.jpg")});
+  background: url(${(props) => (props.isDay ? "/assets/day.jpg" : "/assets/night.jpg")});
   background-attachment: fixed;
 
   width: 100%;

@@ -21,7 +21,9 @@ function App() {
 
       <Layout isDay={Boolean(data?.current?.is_day)}>
         <Routes>
-          <Route path="/" element={<CurrentWeather />} />
+          <Route path="/" element={<CurrentWeather />}>
+            <Route path=":city" element={<CurrentWeather />} />
+          </Route>
           <Route path="/detail" element={<DetailWeather />} />
           <Route path="/forecast" element={<FutureWeather />} />
           <Route path="*" element={<NotFound />} />
