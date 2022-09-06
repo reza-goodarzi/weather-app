@@ -45,8 +45,8 @@ export function WeatherContextProvider({ children }) {
       })
       .catch((error) => {
         if (city) {
-          fetchCurrentWeather(coords);
           setCity("");
+          fetchCurrentWeather(coords);
           window.history.replaceState(null, "", "/");
         } else {
           setError(error);
