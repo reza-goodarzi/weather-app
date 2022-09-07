@@ -4,7 +4,7 @@ import styled from "styled-components";
 function Layout({ isDay, children }) {
   console.log({ isDay });
   return (
-    <>
+    <BackgroundStyled isDay={isDay}>
       <NavStyle>
         <ul>
           <li>
@@ -19,10 +19,8 @@ function Layout({ isDay, children }) {
         </ul>
       </NavStyle>
 
-      <BackgroundStyled isDay={isDay}>
-        <MainSection>{children}</MainSection>
-      </BackgroundStyled>
-    </>
+      <MainSection>{children}</MainSection>
+    </BackgroundStyled>
   );
 }
 
@@ -32,8 +30,10 @@ const NavStyle = styled.nav`
   position: absolute;
   top: 0;
   left: 0;
+  right: 0;
   padding: 1.5rem 2rem;
   color: var(--color-white);
+  z-index: 5;
 
   ul {
     display: flex;
@@ -45,7 +45,8 @@ const NavStyle = styled.nav`
 
     li a {
       @media screen and (max-width: 640px) {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
+        text-shadow: 0 0 2px rgba(0, 0, 0);
       }
     }
   }
@@ -87,7 +88,10 @@ const MainSection = styled.main`
 
   @media screen and (max-width: 640px) {
     width: 100%;
-    padding: 2rem;
+    height: calc(100vh - 8rem);
+    margin: 0;
+    padding: 6rem 2rem 2rem;
     border-radius: 0;
+    overflow: auto;
   }
 `;

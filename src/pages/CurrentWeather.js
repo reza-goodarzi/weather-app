@@ -102,6 +102,7 @@ const BasicInformationStyle = styled.div`
     width: auto;
     flex-wrap: wrap;
     justify-content: center;
+    padding: 2rem 0.5rem;
   }
 
   .degree {

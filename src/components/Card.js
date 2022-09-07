@@ -41,6 +41,7 @@ const CardStyle = styled.div`
     font-weight: bold;
     cursor: default;
     user-select: none;
+    text-shadow: none;
 
     @media screen and (max-width: 640px) {
       font-size: 6rem;
